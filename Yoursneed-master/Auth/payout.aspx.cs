@@ -13,22 +13,22 @@ public partial class Auth_payout : System.Web.UI.Page
     SQLHelper objsql = new SQLHelper();
     public int sponser = 0, proposer = 0;
     DataTable dt = new DataTable();
-    public int total = 0,bal=0;
-    public string value1 = "",value2="";
-    public static int cnt = 0;
+    public int total = 0, bal = 0;
+    public string value1 = "", value2 = "";
+    public static int cnt = 0,valcnt=0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-           
+
 
         }
     }
     protected void bind(string reg)
     {
         lblregno.Text = reg.ToString();
-        lblname.Text = Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" +reg + "'"));
-        string mobile= Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + reg + "'"));
+        lblname.Text = Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" + reg + "'"));
+   
         sponser = int.Parse(Common.Get(objsql.GetSingleValue("select count(*) from usersnew where spillsregno='" + reg + "' and joined>'2018-07-17 00:00:00'")));
         proposer = int.Parse(Common.Get(objsql.GetSingleValue("select count(*) from usersnew where proposerregno='" + reg + "' and joined>'2018-07-17 00:00:00'")));
         lblstotal.Text = (Convert.ToInt32(lblsincome.Text) * Convert.ToInt32(sponser)).ToString();
@@ -36,25 +36,14 @@ public partial class Auth_payout : System.Web.UI.Page
         lbltotal.Text = (Convert.ToInt32(lblstotal.Text) + Convert.ToInt32(lblptotal.Text)).ToString();
         lbltds.Text = ((Convert.ToInt32(lbltotal.Text) * Convert.ToInt32(10)) / Convert.ToInt32(100)).ToString();
         lblnet.Text = (Convert.ToInt32(lbltotal.Text) - Convert.ToInt32(lbltds.Text)).ToString();
-        if(cnt==0)
-        {
 
-        }
-        else
-        {
-            string msz = "Yours Id No. " + reg + " Debit INR amount " + txtmnt.Text + "/- on Date " + DateTime.Now + " by YOURSNEED Business Total Bal INR " + lblnet.Text + " . More info visit to www.yoursneed.com";
-            string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=" + mobile + "&msg=" + msz + "&senderid=YOURND";
-            apicall(apival);
-            cnt = 0;
-        }
-         
         dt = objsql.GetTable("select * from payout where regno='" + reg + "' and dated >'2018-07-17 00:00:00'");
         if (dt.Rows.Count > 0)
         {
             ListView1.DataSource = dt;
             ListView1.DataBind();
         }
-      
+
     }
     public string apicall(string url)
     {
@@ -75,6 +64,7 @@ public partial class Auth_payout : System.Web.UI.Page
             txtreg.Text = txtregid.Text;
             bind(txtregid.Text);
             cnt = 0;
+            valcnt = 0;
         }
         else
         {
@@ -84,6 +74,13 @@ public partial class Auth_payout : System.Web.UI.Page
         }
     }
 
+    protected void Details(string reg)
+    {
+        string mobile = Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + reg + "'"));
+        string msz = "Yours Id No. " + reg.ToString() + " Debit INR amount " + txtmnt.Text + "/- on Date " + DateTime.Now + " by YOURSNEED Business Total Bal INR " + bal + "/-. For more info visit to www.yoursneed.com";
+        string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=" + mobile + "&msg=" + msz + "&senderid=YOURND";
+        apicall(apival);
+    }
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
         string id = (sender as LinkButton).CommandArgument;
@@ -117,19 +114,32 @@ public partial class Auth_payout : System.Web.UI.Page
         }
         bind(txtregid.Text);
     }
-   
+
 
     protected void ListView1_ItemDataBound(object sender, ListViewItemEventArgs e)
     {
+        int col = (Convert.ToInt32(ListView1.Items.Count.ToString()))+1;
         if (e.Item.ItemType == ListViewItemType.DataItem)
         {
             Label amt = (Label)e.Item.FindControl("lblamt");
-            total +=int.Parse( amt.Text);
-
+            total += int.Parse(amt.Text);
+            valcnt += 1;
         }
         bal = Convert.ToInt32(lblnet.Text) - total;
-    }
+     
+        if (cnt == 0)
+        {
 
+        }
+        else
+        {
+            if (valcnt ==col)
+            {
+                Details(lblregno.Text);
+                cnt = 0;
+            }
+        }
+    }
     protected void LinkButton2_Click(object sender, EventArgs e)
     {
         string id = (sender as LinkButton).CommandArgument;
