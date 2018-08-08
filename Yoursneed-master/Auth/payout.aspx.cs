@@ -80,6 +80,11 @@ public partial class Auth_payout : System.Web.UI.Page
         string msz = "Yours Id No. " + reg.ToString() + " Debit INR amount " + txtmnt.Text + "/- on Date " + DateTime.Now + " by YOURSNEED Business Total Bal INR " + bal + "/-. For more info visit to www.yoursneed.com";
         string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=" + mobile + "&msg=" + msz + "&senderid=YOURND";
         apicall(apival);
+        cnt = 0;
+        valcnt = 0;
+        txtmnt.Text = "";
+        txtreason.Text = "";
+
     }
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
