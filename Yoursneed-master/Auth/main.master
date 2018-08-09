@@ -163,6 +163,8 @@
                                         <li><a href="listfrontachiever.aspx"><i class="fa fa-bar-chart-o"></i>View Achiever </a></li>
                                         <li><a href="News.aspx"><i class="fa fa-table"></i>Add News</a></li>
                                         <li><a href="viewnews.aspx"><i class="fa fa-bar-chart-o"></i>View News </a></li>
+                                          <li><a href="popup.aspx"><i class="fa fa-table"></i>Add Front Image</a></li>
+                                        <li><a href="view-popup.aspx"><i class="fa fa-bar-chart-o"></i>View Front Image </a></li>
                                     </ul>
                                 </li>
                                 
