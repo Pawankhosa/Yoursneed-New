@@ -11,7 +11,7 @@ public partial class Main : System.Web.UI.MasterPage
     public string frontimg = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        BindImage();
+        //BindImage();
     }
     protected void lnklogin_Click(object sender, EventArgs e)
     {
@@ -23,13 +23,13 @@ public partial class Main : System.Web.UI.MasterPage
         Session.Abandon();
         Response.Redirect("~/login.aspx");
     }
-    public void BindImage()
-    {
-        DataTable dt = new DataTable();
-        dt = objsql.GetTable("select * from popup");
-        if (dt.Rows.Count > 0)
-        {
-            frontimg= dt.Rows[0]["image"].ToString();
-        }
-    }
+    //public void BindImage()
+    //{
+    //    DataTable dt = new DataTable();
+    //    dt = objsql.GetTable("select * from popup");
+    //    if (dt.Rows.Count > 0)
+    //    {
+    //        frontimg= dt.Rows[0]["image"].ToString();
+    //    }
+    //}
 }

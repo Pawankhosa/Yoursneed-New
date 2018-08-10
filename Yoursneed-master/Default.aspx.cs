@@ -10,6 +10,7 @@ public partial class _Default : System.Web.UI.Page
 {
     SQLHelper objsql = new SQLHelper();
     DataTable dt = new DataTable();
+    public string frontimg = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -26,17 +27,27 @@ public partial class _Default : System.Web.UI.Page
                 ListView1.DataSource = dt;
                 ListView1.DataBind();
             }
+            BindImage();
         }
+    
     }
     protected void lnklogin_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/login.aspx");
-
     }
 
     protected void lnklogout_Click(object sender, EventArgs e)
     {
         Session.Abandon();
         Response.Redirect("~/login.aspx");
+    }
+    public void BindImage()
+    {
+        DataTable dt2 = new DataTable();
+        dt2 = objsql.GetTable("select * from popup");
+        if (dt2.Rows.Count > 0)
+        {
+            frontimg = dt2.Rows[0]["image"].ToString();
+        }
     }
 }
