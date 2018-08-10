@@ -25,8 +25,8 @@
                     <td><img src='../uploadimage/<%#Eval("image") %>' width="100" /></td>
                     
                      <td>
-                         <asp:LinkButton ID="edit" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="edit_Click">Edit</asp:LinkButton> |
-                          <asp:LinkButton ID="delete" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="delete_Click">Delete</asp:LinkButton>
+                         <asp:LinkButton ID="edit" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="edit_Click">Edit</asp:LinkButton> 
+                          <asp:LinkButton ID="delete" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="delete_Click" Visible="false">Delete</asp:LinkButton>
                      </td>
 
                 </tr>
