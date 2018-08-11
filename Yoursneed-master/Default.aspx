@@ -53,7 +53,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 440px;
+            width: 340px;
             height: 850px;
             display: none;
             z-index: 9999;
@@ -63,7 +63,7 @@
         }
 
         #boxes #dialog {
-            width: 450px;
+            width: 350px;
             height: auto;
             padding: 10px 10px 10px 10px;
             background-color: #ffffff;
@@ -91,12 +91,12 @@
             <div style="top: 50%; left: 50%; display: none;" id="dialog" class="window">
                 <div id="san">
                     <a href="#" class="close agree">
-                        <img src="Auth/img/cross.png" width="35" style="float: right; margin-right: -25px; margin-top: -20px;" /></a>
-                    <img src='uploadimage/<%=frontimg %>' width="450">
+                        <img src="Auth/img/cross.png" width="35" style="float: right; margin-right: -20px; margin-top: -20px;" class="img-responsive" /></a>
+                    <img src='uploadimage/<%=frontimg %>' class="img-responsive">
                 </div>
             </div>
-            <div style="width: 2478px; font-size: 32pt; color: white; height: 1202px; display: none; opacity: 0.4;" id="mask"></div>
-        </div>
+            <div style="font-size: 32pt; color: white; height: 1990px; display: none; opacity: 0.4;" id="mask"></div>
+        </div>  <%-- <div style="width: 2478px; font-size: 32pt; color: white; height: 1202px; display: none; opacity: 0.4;" id="mask"></div>--%>
         <div id="loading">
             <div id="loading-center">
                 <img src="images/loader.gif" alt="">
