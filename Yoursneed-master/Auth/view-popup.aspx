@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpmain" Runat="Server">
       <div class="col-md-12">
-        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" style="width:100%;">
         <thead>
             <tr>
                 <th>Sr.No</th>
@@ -25,8 +25,8 @@
                     <td><img src='../uploadimage/<%#Eval("image") %>' width="100" /></td>
                     
                      <td>
-                         <asp:LinkButton ID="edit" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="edit_Click">Edit</asp:LinkButton> 
-                          <asp:LinkButton ID="delete" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="delete_Click" Visible="false">Delete</asp:LinkButton>
+                         <asp:LinkButton ID="edit" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="edit_Click">Edit</asp:LinkButton> | 
+                          <asp:LinkButton ID="delete" CommandArgument='<%#Eval("id") %>' runat="server" OnClick="delete_Click">Delete</asp:LinkButton>
                      </td>
 
                 </tr>

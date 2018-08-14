@@ -82,6 +82,38 @@
         .popupoption2:hover {
             color: red;
         }
+
+        /*.rslides {
+            position: relative;
+            list-style: none;
+            overflow: hidden;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+            .rslides li {
+                -webkit-backface-visibility: hidden;
+                position: absolute;
+                display: none;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+
+                .rslides li:first-child {
+                    position: relative;
+                    display: block;
+                    float: left;
+                }
+
+            .rslides img {
+                display: block;
+                height: auto;
+                float: left;
+                width: 100%;
+                border: 0;
+            }*/
     </style>
 </head>
 
@@ -92,11 +124,22 @@
                 <div id="san">
                     <a href="#" class="close agree">
                         <img src="Auth/img/cross.png" width="35" style="float: right; margin-right: -20px; margin-top: -20px;" class="img-responsive" /></a>
-                    <img src='uploadimage/<%=frontimg %>' class="img-responsive">
+                    <ul class="rslides">
+
+                        <asp:ListView ID="ListView2" runat="server">
+                            <ItemTemplate>
+                                <li>
+                                    <img src='uploadimage/<%# Eval("image") %>' class="img-responsive">
+                                </li>
+                            </ItemTemplate>
+                        </asp:ListView>
+
+                    </ul>
                 </div>
             </div>
             <div style="font-size: 32pt; color: white; height: 1990px; display: none; opacity: 0.4;" id="mask"></div>
-        </div>  <%-- <div style="width: 2478px; font-size: 32pt; color: white; height: 1202px; display: none; opacity: 0.4;" id="mask"></div>--%>
+        </div>
+        <%-- <div style="width: 2478px; font-size: 32pt; color: white; height: 1202px; display: none; opacity: 0.4;" id="mask"></div>--%>
         <div id="loading">
             <div id="loading-center">
                 <img src="images/loader.gif" alt="">
@@ -419,31 +462,37 @@ back to top -->
                 $(".rslides").responsiveSlides();
             });
         </script>
-            <script>
-        $(document).ready(function () {
-            var id = '#dialog';
-            var maskHeight = $(document).height();
-            var maskWidth = $(window).width();
-            $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
-            $('#mask').fadeIn(500);
-            $('#mask').fadeTo("slow", 0.9);
-            var winH = $(window).height();
-            var winW = $(window).width();
-            $(id).css('top', winH / 2 - $(id).height() / 2);
-            $(id).css('left', winW / 2 - $(id).width() / 2);
-            $(id).fadeIn(2000);
-            $('.window .close').click(function (e) {
-                e.preventDefault();
-                $('#mask').hide();
-                $('.window').hide();
-            });
-            $('#mask').click(function () {
-                $(this).hide();
-                $('.window').hide();
-            });
+        <script>
+            $(document).ready(function () {
+                var id = '#dialog';
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+                $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+                $('#mask').fadeIn(500);
+                $('#mask').fadeTo("slow", 0.9);
+                var winH = $(window).height();
+                var winW = $(window).width();
+                $(id).css('top', winH / 2 - $(id).height() / 2);
+                $(id).css('left', winW / 2 - $(id).width() / 2);
+                $(id).fadeIn(2000);
+                $('.window .close').click(function (e) {
+                    e.preventDefault();
+                    $('#mask').hide();
+                    $('.window').hide();
+                });
+                $('#mask').click(function () {
+                    $(this).hide();
+                    $('.window').hide();
+                });
 
-        });
-    </script>
+            });
+        </script>
+        <script src="js/responsiveslides.min.js"></script>
+        <%--   <script>
+            $(function () {
+                $(".rslides").responsiveSlides();
+            });
+        </script>--%>
     </form>
 </body>
 

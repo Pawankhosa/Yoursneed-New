@@ -47,7 +47,8 @@ public partial class _Default : System.Web.UI.Page
         dt2 = objsql.GetTable("select * from popup");
         if (dt2.Rows.Count > 0)
         {
-            frontimg = dt2.Rows[0]["image"].ToString();
+            ListView2.DataSource = dt2;
+            ListView2.DataBind();
         }
     }
 }
