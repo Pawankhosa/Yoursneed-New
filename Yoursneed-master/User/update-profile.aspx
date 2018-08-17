@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="User_Profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.master" AutoEventWireup="true" CodeFile="update-profile.aspx.cs" Inherits="User_update_profile" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cptitle" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cptitle" runat="Server">
     <h3 class="text-white">Profile</h3>
     <ul class="breadcrumb mt-10">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -8,11 +8,8 @@
         <li class="breadcrumb-item active">Profile</li>
     </ul>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cpmain" Runat="Server">
-
-    <asp:LinkButton ID="lnkupdate" runat="server" OnClick="lnkupdate_Click" style="margin-left:781px;font-size:20px;"><b>Update Profile</b></asp:LinkButton>
+<asp:Content ID="Content2" ContentPlaceHolderID="cpmain" runat="Server">
     <div class="col-md-8 col-md-offset-2">
-
         <table style="width: 100%;" class="table table-bordered">
             <tr>
                 <td>Sponser Id:</td>
@@ -27,7 +24,8 @@
                     <asp:Label ID="lblreg" runat="server" Text="Label"></asp:Label></td>
                 <td>Pan</td>
                 <td>
-                    <asp:Label ID="lblpan" runat="server" Text="Label"></asp:Label></td>
+                    <asp:TextBox ID="lblpan" runat="server"></asp:TextBox>
+                 <%--   <asp:Label ID="lblpan" runat="server" Text="Label"></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>First Name</td>
@@ -35,30 +33,36 @@
                     <asp:Label ID="lblname" runat="server" Text=""></asp:Label></td>
                 <td>Of</td>
                 <td>
-                    <asp:Label ID="lblfather" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblfather" runat="server"></asp:TextBox>
+                   <%-- <asp:Label ID="lblfather" runat="server" Text=""></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>Address</td>
                 <td>
-                    <asp:Label ID="lblads" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblads" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblads" runat="server" Text=""></asp:Label>--%></td>
                 <td></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>City</td>
                 <td>
-                    <asp:Label ID="lblcity" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblcity" runat="server"></asp:TextBox>
+                   <%-- <asp:Label ID="lblcity" runat="server" Text=""></asp:Label>--%></td>
                 <td>PIN</td>
                 <td>
-                    <asp:Label ID="lblpin" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblpin" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblpin" runat="server" Text=""></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>State</td>
                 <td>
-                    <asp:Label ID="lblstate" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblstate" runat="server"></asp:TextBox>
+                   <%-- <asp:Label ID="lblstate" runat="server" Text=""></asp:Label>--%></td>
                 <td>Country</td>
                 <td>
-                    <asp:Label ID="lblcountry" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblcountry" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblcountry" runat="server" Text=""></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>Phone(Office)</td>
@@ -71,10 +75,13 @@
             <tr>
                 <td>Mobile</td>
                 <td>
-                    <asp:Label ID="lblmon" runat="server" Text=""></asp:Label></td>
+                     <asp:TextBox ID="lblmon" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblmon" runat="server" Text=""></asp:Label>--%></td>
+               
                 <td>Email</td>
                 <td>
-                    <asp:Label ID="lblemail" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblemail" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblemail" runat="server" Text=""></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>Bank Account</td>
@@ -87,22 +94,32 @@
             <tr>
                 <td>Nominee</td>
                 <td>
-                    <asp:Label ID="lblnomiee" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblnomiee" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblnomiee" runat="server" Text=""></asp:Label>--%></td>
                 <td>Relation</td>
                 <td>
-                    <asp:Label ID="lblrelation" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblrelation" runat="server"></asp:TextBox>
+                    <%--<asp:Label ID="lblrelation" runat="server" Text=""></asp:Label>--%></td>
             </tr>
             <tr>
                 <td>Nomiee Address</td>
                 <td>
+                  
                     <asp:Label ID="lblnomads" runat="server" Text=""></asp:Label></td>
                 <td>Nominee Phone</td>
                 <td>
                     <asp:Label ID="lblnomieephone" runat="server" Text=""></asp:Label></td>
             </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <asp:Button ID="btnsubmit" runat="server" Text="Submit" css="btn" OnClick="btnsubmit_Click" />
+                </td>
+            </tr>
         </table>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cpfotter" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="cpfotter" runat="Server">
 </asp:Content>
 

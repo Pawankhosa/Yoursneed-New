@@ -6,11 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class User_Profile : System.Web.UI.Page
+public partial class User_update_profile : System.Web.UI.Page
 {
     SQLHelper objsql = new SQLHelper();
     public DataTable dt = new DataTable();
-    string editing = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -22,13 +21,13 @@ public partial class User_Profile : System.Web.UI.Page
     protected void bind()
     {
         dt = objsql.GetTable("select * from usersnew where regno='" + Session["user"] + "'");
-        if(dt.Rows.Count>0)
+        if (dt.Rows.Count > 0)
         {
 
             lblspon.Text = dt.Rows[0]["spillsregno"].ToString();
             lblads.Text = dt.Rows[0]["add1"].ToString();
             lblbank.Text = dt.Rows[0]["bankname"].ToString();
-            lblbankac.Text = dt.Rows[0]["account"].ToString();  
+            lblbankac.Text = dt.Rows[0]["account"].ToString();
             lblcity.Text = dt.Rows[0]["city"].ToString();
             lblcountry.Text = dt.Rows[0]["country"].ToString();
             lblemail.Text = dt.Rows[0]["email"].ToString();
@@ -45,20 +44,13 @@ public partial class User_Profile : System.Web.UI.Page
             lblreg.Text = dt.Rows[0]["regno"].ToString();
             lblrelation.Text = dt.Rows[0]["relation"].ToString();
             lblstate.Text = dt.Rows[0]["state"].ToString();
-            editing = dt.Rows[0]["edited"].ToString();
-            if(editing=="1")
-            {
-                lnkupdate.Visible = false;
-            }
-            else
-            {
-                lnkupdate.Visible = true;
-            }
+
         }
     }
 
-    protected void lnkupdate_Click(object sender, EventArgs e)
+    protected void btnsubmit_Click(object sender, EventArgs e)
     {
-        Response.Redirect("update-profile.aspx");
+        objsql.ExecuteNonQuery("update usersnew set fname='"+ lblfather.Text + "',add1='"+ lblads.Text + "',city='"+ lblcity.Text + "',pin='"+ lblpin.Text + "',state='"+ lblstate.Text + "',country='"+ lblcountry.Text + "',mobile='"+ lblmon.Text + "',pannumber='"+ lblpan.Text + "',email='"+lblemail.Text+"',relation='"+ lblrelation.Text + "',nominame='"+ lblnomiee.Text + "',edited='1' where regno='" + Session["user"] + "' ");
+        Response.Redirect("dashboard.aspx");
     }
 }

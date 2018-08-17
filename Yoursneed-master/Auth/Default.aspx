@@ -13,10 +13,14 @@
                  color:white;
         }
         .green{ background:#27ae60;color:white}
-        .contact-info h5{
-            color:white;
-                font-weight: bold;
-        }
+         .contact-info h5 {
+             color: white;
+             font-weight: bold;
+         }
+                .red{background: #f50e0e99;
+    color: white;}
+           .pink{background: #ec7792;
+    color: white;}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cptitle" Runat="Server">
@@ -47,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash pink">
             <div class="contact-box">
                 <div class="contact-icon">
                     <i class="fa fa-link"></i>
@@ -55,9 +59,64 @@
                 <div class="contact-info">
                     <h5>Pairing</h5>
                     <span>
-                       L: <asp:Label ID="lblleft" runat="server" Text=""></asp:Label></span>
+                       L: <asp:Label ID="Label3" runat="server" Text=""></asp:Label></span>
                     <span>
-                       R: <asp:Label ID="lblright" runat="server" Text=""></asp:Label></span>
+                       R: <asp:Label ID="Label4" runat="server" Text=""></asp:Label></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <i class="fa fa-anchor"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Blocked User</h5>
+                        <asp:Label ID="lblblock" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash red">
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <i class="fa fa-anchor"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>UN-Blocked User</h5>
+                        <asp:Label ID="lblunblock" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+                <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
+            <div class="contact-box">
+                <div class="contact-icon">
+                      <i class="fa fa-link"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Used Pins</h5>
+                        <asp:Label ID="lblused" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash red">
+            <div class="contact-box">
+                <div class="contact-icon">
+                      <i class="fa fa-link"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>UN-Used Pins</h5>
+                        <asp:Label ID="lblunused" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+         <div class="col-lg-2 col-sm-3 bottom-m3 Dash blue">
+            <div class="contact-box">
+                <div class="contact-icon">
+                      <i class="fa fa-link"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Total Structure</h5>
+                        <asp:Label ID="lblstruct" runat="server" Text=""></asp:Label>
                 </div>
             </div>
         </div>

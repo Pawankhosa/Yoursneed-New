@@ -20,6 +20,10 @@ public partial class Auth_Default : System.Web.UI.Page
     {
         lbltoday.Text = Common.Get(objsql.GetSingleValue("select count(*) from usersnew where joined='" + System.DateTime.Now.ToString("yyyy-MM-dd") + "'"));
         lbltotal.Text = Common.Get(objsql.GetSingleValue("select count(*) from usersnew "));
-
+        lblblock.Text= Common.Get(objsql.GetSingleValue("select count(*) from usersnew where active='0'"));
+        lblunblock.Text= Common.Get(objsql.GetSingleValue("select count(*) from usersnew where active='1'"));
+        lblused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='y'"));
+        lblunused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='n'"));
+        lblstruct.Text= Common.Get(objsql.GetSingleValue("select count(*) from inststruc i Inner Join usersnew u on i.Cregno=u.regno"));
     }
 }
