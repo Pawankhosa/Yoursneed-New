@@ -19,6 +19,8 @@ public partial class User_Join_us : System.Web.UI.Page
     public static Boolean proposalstatus = false;
     public int lefdirect = 0, rightdirect = 0, left = 0, right = 0;
     Common cm = new Common();
+    public static string date = "";
+    private static TimeZoneInfo INDIAN_ZONE;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -34,6 +36,9 @@ public partial class User_Join_us : System.Web.UI.Page
                 lastdata = lastnode(sponser);
             }
         }
+        INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+        DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
+        date = indianTime.ToString("yyyy-MM-dd");
     }
 
     #region Check Valid Upline
@@ -111,7 +116,7 @@ public partial class User_Join_us : System.Web.UI.Page
                      pass = cm.Generatepass();
                     objsql.ExecuteNonQuery("insert into usersnew(regno,pass,fname,lname,dob,add1,city,pin,state,country,mobile,nomirel,sregno,node,status,joined,grace,spillsregno,updated,updatepin,pintypeid,aadharcard,proposerregno,relation,Active,edited) values('" + newregno + "','" + pass + "','" + txtname.Text + "','" + txtrelation.Text + "','" + dob() + "','" + txtadd.Text + "','" + txtcity.Text + "','" + txtpincode.Text + "','" + txtstate.Text + "','" + txtcountry.Text + "','" + txtphn.Text + "','" + txtnominee.Text + "','"+ lastnode(sponser) + "','"+rdonode.SelectedItem.Value+"','y','"+DateTime.Now+"','10','"+sponser+"','n','"+pin+"','"+pintype+"','"+txtaadhar.Text+"','"+txtproposerid.Text+"','"+ddlrelation.SelectedItem.Text+"','1','0')");
                     // joining installment
-                    objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated,paidby) values('" + newregno + "','1','1000','" + DateTime.Now + "','')");
+                    objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated,paidby) values('" + newregno + "','1','1000','" + date + "','')");
                     objsql.ExecuteNonQuery("update pins set status='y',subregno='" + newregno+"' where pin='" + pin + "'");
                     #region insert in leg table
                     string countleafnode = Common.Get(objsql.GetSingleValue("select regno from legs where regno='" + newregno + "'"));
@@ -261,7 +266,7 @@ public partial class User_Join_us : System.Web.UI.Page
         int stotal = (200) * (sponser);
         string tds = ((Convert.ToInt32(stotal) * Convert.ToInt32(10)) / Convert.ToInt32(100)).ToString();
         string total = (Convert.ToInt32(stotal) - Convert.ToInt32(tds)).ToString();
-        string msz = "Your Id A/C " + txtsponserid.Text + " Credited INR 200/- on "+DateTime.Now + " - Deposited by YOURSNEED business Total Bal INR " + total + "/-. For more info visit to www.yoursneed.com";
+        string msz = "Your Id A/C " + txtsponserid.Text + " Credited INR 200/- on "+date + " - Deposited by YOURSNEED business Total Bal INR " + total + "/-. For more info visit to www.yoursneed.com";
         //string msz = "CONGRATULATIONS." + name + " Id No. " + txtsponserid.Text + " Your direct income INR 200/- and Total INR " + total + "/- credited by YOURSNEED Trading Company.Plz check your details on www.yoursneed.com";
         string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=" + mobile + "&msg=" + msz + "&senderid=YOURND";
         apicall(apival);

@@ -42,12 +42,35 @@
         <div class="col-lg-2 col-sm-3 bottom-m3 Dash yellow">
             <div class="contact-box">
                 <div class="contact-icon">
-                    <i class="fa fa-anchor"></i>
+                    <i class="fa fa-user"></i>
                 </div>
                 <div class="contact-info">
                     <h5>Total User</h5>
                     <span>
                         <asp:Label ID="lbltotal" runat="server" Text=""></asp:Label></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash red">
+            <div class="contact-box">
+                <div class="contact-icon">
+                   <i class="fa fa-user"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Blocked User</h5>
+                        <asp:Label ID="lblblock" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
+            <div class="contact-box">
+                <div class="contact-icon">
+                 <i class="fa fa-user"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>UN-Blocked User</h5>
+                        <asp:Label ID="lblunblock" runat="server" Text=""></asp:Label>
                 </div>
             </div>
         </div>
@@ -65,32 +88,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
-            <div class="contact-box">
-                <div class="contact-icon">
-                    <i class="fa fa-anchor"></i>
-                </div>
-                <div class="contact-info">
-                    <h5>Blocked User</h5>
-                        <asp:Label ID="lblblock" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-sm-3 bottom-m3 Dash red">
-            <div class="contact-box">
-                <div class="contact-icon">
-                    <i class="fa fa-anchor"></i>
-                </div>
-                <div class="contact-info">
-                    <h5>UN-Blocked User</h5>
-                        <asp:Label ID="lblunblock" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-        </div>
                 <div class="col-lg-2 col-sm-3 bottom-m3 Dash green">
             <div class="contact-box">
                 <div class="contact-icon">
-                      <i class="fa fa-link"></i>
+                      <i class="fa fa-unlock"></i>
                 </div>
                 <div class="contact-info">
                     <h5>Used Pins</h5>
@@ -101,7 +102,7 @@
         <div class="col-lg-2 col-sm-3 bottom-m3 Dash red">
             <div class="contact-box">
                 <div class="contact-icon">
-                      <i class="fa fa-link"></i>
+                      <i class="fa fa-lock"></i>
                 </div>
                 <div class="contact-info">
                     <h5>UN-Used Pins</h5>
@@ -112,11 +113,36 @@
          <div class="col-lg-2 col-sm-3 bottom-m3 Dash blue">
             <div class="contact-box">
                 <div class="contact-icon">
-                      <i class="fa fa-link"></i>
+                      <i class="fa fa-check-square"></i>
                 </div>
                 <div class="contact-info">
                     <h5>Total Structure</h5>
                         <asp:Label ID="lblstruct" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-3 bottom-m3 Dash pink">
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <i class="fa fa-bank"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Today's Total Installments</h5>
+                    <asp:Label ID="lblinstall" runat="server" Text=""></asp:Label>
+                       <h5><%=monthname %> Installments:<asp:Label ID="lblmonth" runat="server" Text=""></asp:Label></h5>
+                    
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-2 col-sm-3 bottom-m3 Dash yellow">
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <i class="fa fa-bell"></i>
+                </div>
+                <div class="contact-info">
+                    <h5>Reward Alert</h5>
+                    <span>
+                        <asp:Label ID="lblreward" runat="server" Text=""></asp:Label></span>
                 </div>
             </div>
         </div>

@@ -13,12 +13,17 @@ public partial class Auth_View_Structure : System.Web.UI.Page
     SQLHelper objsql = new SQLHelper();
     DataTable dt = new DataTable();
     public int cont = 0;
+    public static string date = "";
+    private static TimeZoneInfo INDIAN_ZONE;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
            
         }
+        INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+        DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
+        date = indianTime.ToString("yyyy-MM-dd");
     }
     protected void bind(string regno)
     {
@@ -77,12 +82,12 @@ public partial class Auth_View_Structure : System.Web.UI.Page
             {
                 if (pay.Text!="")
                 {
-                    
-                        int length = Convert.ToInt32(pay.Text);
+                  
+                    int length = Convert.ToInt32(pay.Text);
                         for (int i = 1; i <= length; i++)
                         {
                         
-                        objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + id.Value + "','1','1000','" + System.DateTime.Now + "')");
+                        objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + id.Value + "','1','1000','" + date + "')");
                         string mobile = Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + id.Value + "'"));
                         string msz = "Your Emi update successfully.Please check it online.Thanks";
                         string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=" + mobile + "&msg=" + msz + "&senderid=YOURND";

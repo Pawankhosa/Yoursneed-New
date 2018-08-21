@@ -14,6 +14,8 @@ public partial class User_Structure : System.Web.UI.Page
 
     SQLHelper objsql = new SQLHelper();
     DataTable dt = new DataTable();
+    public static string date = "";
+    private static TimeZoneInfo INDIAN_ZONE;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -24,6 +26,9 @@ public partial class User_Structure : System.Web.UI.Page
             }
 
         }
+        INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+        DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
+        date = indianTime.ToString("yyyy-MM-dd");
     }
     protected void bind(string regno)
     {
@@ -70,7 +75,7 @@ public partial class User_Structure : System.Web.UI.Page
                             if (maxid != null)
                             {
                                 objsql.ExecuteNonQuery("update duepins set status='y',dated='" + System.DateTime.Now + "' where serial='" + maxid + "'");
-                                objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + id.Value + "','1','1000','" + System.DateTime.Now + "')");
+                                objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + id.Value + "','1','1000','" + date + "')");
 
                                 string mobile = Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + id.Value + "'"));
                                 string msz = "Your Emi update successfully.Please check it online.Thanks . For more info visit to www.yoursneed.com ";

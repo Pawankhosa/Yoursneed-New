@@ -11,6 +11,8 @@ using System.IO;
 public partial class Auth_AddInstallments : System.Web.UI.Page
 {
     SQLHelper objsql = new SQLHelper();
+    public static string date = "";
+    private static TimeZoneInfo INDIAN_ZONE;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -20,10 +22,13 @@ public partial class Auth_AddInstallments : System.Web.UI.Page
     {
         using (TransactionScope ts=new TransactionScope ())
         {
+            INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
+            date = indianTime.ToString("yyyy-MM-dd");
             int end = int.Parse(ddlinst.SelectedItem.Value);
             for (int i = 1; i <= end; i++)
             {
-                objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + txtregid.Text + "','1','" + txtamnt.Text + "','" + System.DateTime.Now + "')");
+                objsql.ExecuteNonQuery("insert into installments(regno,installment,amount,dated) values('" + txtregid.Text + "','1','" + txtamnt.Text + "','" + date + "')");
             }
             ts.Complete();
             ts.Dispose();
