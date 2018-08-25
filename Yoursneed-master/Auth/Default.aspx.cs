@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +13,7 @@ public partial class Auth_Default : System.Web.UI.Page
     public string current = "",monthname="",days="",year="";
     public static string date = "";
     private static TimeZoneInfo INDIAN_ZONE;
+    string constring = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Admin"] == null)
@@ -113,7 +117,24 @@ public partial class Auth_Default : System.Web.UI.Page
 
          lblmonth.Text= Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated BETWEEN '"+ startdate + "' AND '"+ enddate + "'"));
 
+        //using (SqlConnection con = new SqlConnection(constring))
+        //{
 
+        //    using (SqlCommand cmd = new SqlCommand("AchieveRewards", con))
+        //    {
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        // sponser id                           // node
+        //        cmd.Parameters.Add("@printvalue", SqlDbType.VarChar, 30);
+        //        cmd.Parameters["@printvalue"].Direction = ParameterDirection.Output;
+        //        con.Open();
+        //        cmd.ExecuteNonQuery();
+        //        con.Close();
+        //        lblreward.Text = cmd.Parameters["@printvalue"].Value.ToString();
+
+        //    }
+
+        //}
 
     }
+
 }
