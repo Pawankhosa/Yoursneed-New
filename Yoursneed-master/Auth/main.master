@@ -65,6 +65,9 @@
                         <div class="left-sidebar-content">
                             <ul class="sidebar-elements">
                                 <li class="divider">Menu</li>
+                                 <li><a href="Default.aspx"><i class="fa fa-edit"></i>Dashboard </a>
+
+                                </li>
                                 <li><a href="LastJoining.aspx"><i class="fa fa-edit"></i>Check Last Joining </a>
 
                                 </li>

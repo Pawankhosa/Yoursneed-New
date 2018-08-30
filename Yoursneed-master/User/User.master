@@ -110,7 +110,7 @@
                                 </ul>
                                 <!-- menu links -->
                                 <ul class="menu-links col-md-9">
-                                 
+                                    <li ><a href="Dashboard.aspx">Dashboard</a></li>
                                     <li class="active"><a href="javascript:void(0)"> Pins <i class="fa fa-angle-down fa-indicator"></i></a>
                                         <!-- drop down multilevel  -->
                                         <ul class="drop-down-multilevel">
